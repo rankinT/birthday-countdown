@@ -4,6 +4,7 @@
     --background-color-3: rgba(201, 250, 247, 0.774);
     --background-color-3-alt: rgba(201, 210, 250, 0.705);
     --font-color-1:rgb(255, 255, 255);
+    --bold-color: rgb(247, 255, 0);
 }
 
 body{
@@ -12,6 +13,12 @@ body{
     /*background-color: var(--background-color-1); */
     font-family: 'Roboto', sans-serif;
     color: var(--font-color-1)
+}
+
+b{
+   color:  var(--bold-color);
+   font-family: verdana;
+
 }
 
 /*-----------------------------------------------------*/
