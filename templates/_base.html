@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- from main.py -->
+		<title>{{page_title}}</title>
+		<!--yaml uses /s as static url-->
+		<link rel="stylesheet" href="/s/styles.css" />
+
+        <!--GOOGLE FONTS-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet">
+	</head>
+	<body>
+        <!--TODO: sign in/out button or page-->
+		<nav>
+			<table>
+				<tr>
+					<td class="title"><h3>Navigation:</h3></td>
+					<td class="link"><a href="index.html">Birthday Countdown</a></td>
+					<td class="link"><a href="about.html">About this App</a></td>
+					<td class="link"><a href="group-info.html">Meet the Members</a></td>
+				</tr>
+			</table>
+		</nav>
+		<div class="block-body">
+			<!--content from templates-->
+			{% block content %}{% endblock %}
+		</div>
+	</body>
+</html>

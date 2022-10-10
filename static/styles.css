@@ -1,0 +1,121 @@
+:root{
+    --background-color-1: rgb(255, 255, 255);
+    --background-color-2: rgba(224, 224, 224, 0.521);
+    --background-color-3: rgba(201, 250, 247, 0.774);
+    --background-color-3-alt: rgba(201, 210, 250, 0.705);
+    --font-color-1:rgb(255, 255, 255);
+}
+
+body{
+    /*Photo by Jason Leung on Unsplash*/
+    background-image: url('/s/confetti.jpg');
+    /*background-color: var(--background-color-1); */
+    font-family: 'Roboto', sans-serif;
+    color: var(--font-color-1)
+}
+
+/*-----------------------------------------------------*/
+/*---------------NAV BAR------------------------------*/
+
+nav table{
+    background-color: var(--background-color-2);
+    padding: 5px 0.5rem;
+    border-radius: 5px;
+}
+
+nav table .title{
+    padding-right: 1rem;
+}
+
+nav table .link{
+    background-color: var(--background-color-3);
+    padding: 0rem 0.5rem;
+    border-radius: 5px;
+    font-weight: 600;
+    color: #056acd;
+}
+
+nav table .link:hover{
+    background-color: var(--background-color-3-alt);
+    padding: 0rem 0.5rem;
+    border-radius: 5px;
+}
+
+nav table .link:visited{
+    background-color: var(--background-color-3-alt);
+    padding: 0rem 0.5rem;
+    border-radius: 5px;
+    color: #056acd;
+    
+}
+
+/*-----------------------------------------------------*/
+/*---------------GROUP INFO PAGE------------------------------*/
+
+.info-container {
+    margin: 1rem;
+    padding: 1em;
+    border-radius: 5px;
+    background-color: var(--background-color-2);
+}
+
+.info-container p{
+    padding-bottom: 10px;
+}
+
+.info-container h2{
+    font-weight: 400;
+}
+
+.info-container p{
+    font-style: italic;
+    font-weight: 400;
+}
+
+/*-----------------------------------------------------*/
+/*---------------APP PAGE------------------------------*/
+
+.app-body{
+    margin: 1rem;
+    padding: 1em;
+    border-radius: 5px;
+    background-color: var(--background-color-2);
+}
+
+.current-date em{
+    color: rgb(133, 0, 0);
+}
+
+.app-body th{
+    color: rgb(148, 84, 0);
+    background-color: rgba(255, 255, 255, 0.863);
+    border-radius: 5px;
+    padding: 0.35em 0;
+    margin-bottom: 10px;
+}
+
+.app-body td{
+    padding: 1rem;
+    background-color: rgba(252, 217, 143, 0.123);
+    border-radius: 5px;
+}
+
+.app-body td:hover{
+    background-color: rgba(253, 186, 41, 0.651);
+}
+
+.birthday-form td{
+    padding: 0.35rem;
+}
+
+/*-----------------------------------------------------*/
+/*---------------DESCRIPTION PAGE------------------------------*/
+
+.about-container {
+    margin: 1rem;
+    padding: 1em;
+    border-radius: 5px;
+    background-color: var(--background-color-2);
+}
+
+
