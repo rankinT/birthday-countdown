@@ -7,5 +7,5 @@ Members include:
   * Pran Sutham
   * Rankin Tran
   * Kevin Corcoran
-  * Donte DeFrancesco
+  * Donte DiFrancesco
   * Trent Foster
