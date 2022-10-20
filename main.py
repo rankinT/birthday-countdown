@@ -27,7 +27,7 @@ def group_info_page():
 @app.route('/push', methods=['POST', 'GET'])
 def push_birthday():
     name = flask.request.form['name']
-    date = flask.request.form['date']
+    date = datetime.strptime(flask.request.form['date'],'%Y%m%d')
     if name and date: 
         birthday_manager.create_birthday(name, date)
 
