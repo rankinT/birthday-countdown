@@ -18,10 +18,10 @@ def clean(s):
 class Birthday():
     """An object representing a single birthday."""
 
-    def __init__(self, user, date):
+    def __init__(self, name, date):
         """Initialize a birthday for named user."""
 
-        self.user = user
+        self.name = name
         self.date = date
 
 
