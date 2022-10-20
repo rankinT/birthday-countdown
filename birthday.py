@@ -41,8 +41,8 @@ class Birthday():
         outputTableElement = '<td class="%s">%s</td>'
 
         nameElement = outputTableElement % ('birthday-name', self.name)
-        dateElement = outputTableElement % ('birthday-date', self.date)
-        countdownElement = outputTableElement % ('birthday-countdown', self.get_countdown())
+        dateElement = outputTableElement % ('birthday-date', str(self.date))
+        countdownElement = outputTableElement % ('birthday-countdown', str(self.get_countdown()))
 
         return outputRow % (nameElement, dateElement, countdownElement)
 
