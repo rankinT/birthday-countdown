@@ -3,53 +3,15 @@
 
 <div class="app-body">
     <h1 class='current-date'>Today is Oct 9, 2022 <em>- WORK IN PROGRESS -</em> </h1> 
-	<table>
-		<!--TODO: FLASK for loop... sorted-->
-        <th colspan='3' class='birthday-title'>Upcoming Birthdays!</tr>
-		<tr>
-			<td class="birthday-name">Jane</td>
-			<td class="birthday-date">(Dec 04)</td>
-			<td class="birthday-coutndown">- in 12 days!</td>
-		</tr>
-        <tr>
-			<td class="birthday-name">Mike</td>
-			<td class="birthday-date">(Dec 14)</td>
-			<td class="birthday-coutndown">- in 22 days!</td>
-		</tr>
-        <tr>
-			<td class="birthday-name">Name</td>
-			<td class="birthday-date">(Dec 24)</td>
-			<td class="birthday-coutndown">- in 32 days!</td>
-		</tr>
-        <tr>
-			<td class="birthday-name">Name</td>
-			<td class="birthday-date">(Dec 24)</td>
-			<td class="birthday-coutndown">- in 32 days!</td>
-		</tr>
-        <tr>
-			<td class="birthday-name">Name</td>
-			<td class="birthday-date">(Dec 24)</td>
-			<td class="birthday-coutndown">- in 32 days!</td>
-		</tr>
-        <tr>
-			<td class="birthday-name">Name</td>
-			<td class="birthday-date">(Dec 24)</td>
-			<td class="birthday-coutndown">- in 32 days!</td>
-		</tr>
-        <tr>
-			<td class="birthday-name">Name</td>
-			<td class="birthday-date">(Dec 24)</td>
-			<td class="birthday-coutndown">- in 32 days!</td>
-		</tr>
-        
-	</table>
+
     <!--TODO: form for user input and queries-->
     <div class="birthday-form">
-		<form action="">
+		<form method="post" action="/push">
+			{{birthdays|safe}}
 			<table>
 				<tr>
-					<td><input type="text" placeholder="Name"/></td>
-					<td><input type="date" /></td>
+					<td><input type="text" name="name" value="{{name}}"/></td>
+					<td><input type="date" name="date" value="{{date}}"/></td>
 					<td><input type="submit" /></td>
 				</tr>
 			</table>

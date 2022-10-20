@@ -109,7 +109,7 @@ class BirthdayManager():
         return result
 
 
-    def get_messages_html(self):
+    def get_birthdays_html(self):
         """Return the current birthday contents as HTML."""
 
         result = ''
