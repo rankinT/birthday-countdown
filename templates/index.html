@@ -7,8 +7,9 @@
     <!--TODO: form for user input and queries-->
     <div class="birthday-form">
 		<form method="post" action="/push">
-			{{birthdays|safe}}
 			<table>
+				<th colspan='3' class='birthday-title'>Upcoming Birthdays!</th>
+				{{birthdays|safe}}
 				<tr>
 					<td><input type="text" name="name" value="{{name}}"/></td>
 					<td><input type="date" name="date" value="{{date}}"/></td>
