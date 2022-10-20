@@ -28,7 +28,7 @@ class Birthday():
     def get_formatted_date(self):
         """Return this messages's time as a 'YYYYMMDD' string."""
 
-        return self.date.strftime('%Y%m%d')
+        return self.date.strftime('%Y-%m-%d')
 
     def get_countdown(self):
         return self.date - datetime.datetime.today()
