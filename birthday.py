@@ -41,14 +41,14 @@ class Birthday():
         outputTableElement = '<td class="%s">%s</td>'
 
         nameElement = outputTableElement % ('birthday-name', self.name)
-        dateElement = outputTableElement % ('birthday-date', str(self.date))
+        dateElement = outputTableElement % ('birthday-date', self.get_formatted_date())
         countdownElement = outputTableElement % ('birthday-countdown', str(self.get_countdown()))
 
         return outputRow % (nameElement, dateElement, countdownElement)
 
 
     def __str__(self):
-        """Return a simple formatted string with the message contents."""
+        """Return a simple formatted string with the birthday contents."""
 
         return 'Name: %s Birthday:(%s) Countdown: [%s]' % (self.name, self.get_formatted_date(), str(self.get_countdown()))
     
