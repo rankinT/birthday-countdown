@@ -1,34 +1,126 @@
-# THIS PAGE DEFINES A BASIC BIRTHDAY OBJECT TO BE USED IN CLOUD DATASTORE
-month = None
-day = None
-year = None
-
-def __init__(self, month, day, year):
-    self.month = month
-    self.day = day
-    self.year = year
-
-# TO STRING
-def __str__(self):
-    return self.month + "/" +  self.day + "/" + self.year
-
-# RETURNS MONTH, DAY, YEAR
-def get_data(self):
-    return self.month, self.day, self.year
-
-# ACCESSORS
-def get_month(self):
-    return self.month
-
-def get_day(self):
-    return self.day
-
-def get_year(self):
-    return self.year
+import datetime
 
 
-def main():
-    pass
+def clean(s):
+    """Return a string w/ angle brackets, endlines, & tab characters removed."""
 
-if __name__ == '__main__':
-    main()
+    s = s.replace('<', '&lt;')
+    s = s.replace('>', '&gt;')
+    s = s.replace('\n', ' ')
+    s = s.replace('\t', ' ')
+    s = s.strip()
+    if len(s) > 100:
+        s = s[:100]
+
+    return s
+
+
+class Birthday():
+    """An object representing a single birthday."""
+
+    def __init__(self, user, date):
+        """Initialize a birthday for named user."""
+
+        self.user = user
+        self.date = date
+
+
+    def get_formatted_date(self):
+        """Return this messages's time as a 'YYYYMMDD' string."""
+
+        return self.date.strftime('%Y%m%d')
+
+    def get_countdown(self):
+        return self.date - datetime.datetime.today()
+
+    def to_html(self):
+        """Convert this message to an HTML div."""
+        
+        # outputDiv = '<div class="Message">%s (%s): %s</div>'
+        outputRow = '<tr>%s</tr>'
+        outputTableElement = '<td class="%s">%s</td>'
+
+        nameElement = outputTableElement % ('birthday-name', self.name)
+        dateElement = outputTableElement % ('birthday-date', self.date)
+        countdownElement = outputTableElement % ('birthday-countdown', self.get_countdown())
+
+        return outputRow % (nameElement, dateElement, countdownElement)
+
+
+    def __str__(self):
+        """Return a simple formatted string with the message contents."""
+
+        return 'Name: %s Birthday:(%s) Countdown: [%s]' % (self.name, self.get_formatted_date(), str(self.get_countdown()))
+    
+
+    def __lt__(self, other):
+        return self.date < other.date
+
+
+    def __gt__(self, other):
+        return self.date > other.date
+    
+
+    def __eq__(self, other):
+        return self.date == other.date
+    
+
+    def __ne__(self, other):
+        return self.date != other.date
+    
+
+    def __le__(self, other):
+        return self.date <= other.date
+    
+
+    def __ge__(self, other):
+        return self.date >= other.date
+
+
+class BirthdayManager():
+    """A class for managing Birthdays."""
+
+    def __init__(self):
+        """Initialize the BirhtdayManager with a new list of birthdays."""
+
+        self.birthdays = []
+
+
+    def add_birthday(self, birthday):
+        """Add a birthday to our birthdays list."""
+
+        self.birthdays.append(birthday)        
+        self.birthdays.sort()
+
+
+    def create_birthday(self, name, date):
+        """Create a new birthday with the current date."""
+
+        self.add_birthday(Birthday(clean(name), date))
+
+
+    def get_birthdays_output(self):
+        """Return the current birthday contents as a plain text string."""
+
+        result = ''
+        for birthday in self.birthdays:
+            result += str(birthday)
+            result += '\n'
+        return result
+
+
+    def get_messages_html(self):
+        """Return the current birthday contents as HTML."""
+
+        result = ''
+        for birthday in self.birthdays:
+            result += birthday.to_html()
+            result += '\n'
+        return result
+
+
+    def delete_birthday(self, time):
+        # Implement Later -- TODO
+        pass 
+
+
