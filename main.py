@@ -31,6 +31,7 @@ def push_birthday():
     if name and date: 
         birthday_manager.create_birthday(name, date)
 
+    birthday_manager.clear_birthdays()
     birthdays = birthday_manager.get_birthdays_html()
 
     return flask.render_template('index.html', birthdays=birthdays, name=name, date=date)

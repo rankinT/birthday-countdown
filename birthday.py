@@ -26,7 +26,7 @@ class Birthday():
 
 
     def get_formatted_date(self):
-        """Return this messages's time as a 'YYYYMMDD' string."""
+        """Return this birthdays's date as a 'YYYYMMDD' string."""
 
         return self.date.strftime('%Y-%m-%d')
 
@@ -34,9 +34,8 @@ class Birthday():
         return self.date - datetime.datetime.today()
 
     def to_html(self):
-        """Convert this message to an HTML div."""
+        """Convert this birthday to an HTML div."""
         
-        # outputDiv = '<div class="Message">%s (%s): %s</div>'
         outputRow = '<tr>%s %s %s</tr>'
         outputTableElement = '<td class="%s">%s</td>'
 
@@ -118,6 +117,8 @@ class BirthdayManager():
             result += '\n'
         return result
 
+    def clear_birthdays(self):
+        self.birthdays.clear()
 
     def delete_birthday(self, time):
         # Implement Later -- TODO
