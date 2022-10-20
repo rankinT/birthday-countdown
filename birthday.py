@@ -37,7 +37,7 @@ class Birthday():
         """Convert this message to an HTML div."""
         
         # outputDiv = '<div class="Message">%s (%s): %s</div>'
-        outputRow = '<tr>%s</tr>'
+        outputRow = '<tr>%s %s %s</tr>'
         outputTableElement = '<td class="%s">%s</td>'
 
         nameElement = outputTableElement % ('birthday-name', self.name)
