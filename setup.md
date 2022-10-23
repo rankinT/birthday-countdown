@@ -1,10 +1,4 @@
-# Setup Cloud Datastore Emulator
-
-## Introduction
-
-This tutorial walks you through setting up the Cloud Datastore Emulator. This
-will allow you to more effectively test your application without having to use
-a live Cloud Datastore environment.
+# Setup Cloud Datastore 
 
 ## Setup: Java
 
@@ -22,13 +16,6 @@ This should show that you are using JDK version 1.8.* - some Java 8 version
 ## Installing the Cloud Datastore Emulator
 
 First, we'll need to install the Cloud Datastore Emulator:
-
-```bash
-gcloud components install cloud-datastore-emulator
-```
-
-_Note: depending on permissions and configuration, you may need to use apt-get
-for this installation:_
 
 ```bash
 sudo apt-get install google-cloud-sdk-datastore-emulator
@@ -59,17 +46,6 @@ execute a ps command:
 
 ```bash
 ps
-```
-
-You'll see something that looks like this:
-
-```
-    PID TTY          TIME CMD
-    320 pts/1    00:00:00 bash
-   1130 pts/1    00:00:00 python2
-   1156 pts/1    00:00:00 cloud_datastore
-   1158 pts/1    00:00:02 java
-   1192 pts/1    00:00:00 ps
 ```
 
 Note the PID for cloud_datastore and java. The Java PID should be a number
