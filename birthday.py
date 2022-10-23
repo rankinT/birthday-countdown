@@ -1,4 +1,5 @@
 from datetime import datetime
+from google.cloud import datastore
 
 
 def clean(s):
@@ -15,20 +16,37 @@ def clean(s):
     return s
 
 
+def get_client():
+    """Get the Client object for the datastore."""
+    
+    return datastore.Client()
+
+
+def fetch_birthdays():
+    """Fetch and return the birthday data from the datastore."""
+
+    client = get_client()
+    query = client.query(kind='birthday')
+    
+    return query.fetch()
+
+
 class Birthday():
     """An object representing a single birthday."""
 
-    def __init__(self, name, date):
+    def __init__(self, name, date, entity_id=None):
         """Initialize a birthday object with a given name and date."""
 
         self.name = name
         self.date = date
+        self.entity_id = entity_id
 
 
     def get_formatted_date(self):
         """Return this birthdays's date as a 'Month DD YYYY' string."""
 
-        return self.date.strftime('%b %d %Y')
+        return self.date.strftime('%b %d, %Y')
+
 
     def get_countdown(self):
         """Return the number of days between the the given date and today as a string 'in DD days!'"""
@@ -45,18 +63,6 @@ class Birthday():
             return 'TODAY!'
 
         return f'in {countdown} days!'
-
-    def to_html(self):
-        """Convert this birthday to an HTML row element."""
-        
-        outputRow = '<tr>%s %s %s</tr>'
-        outputTableElement = '<td class="%s">%s</td>'
-
-        nameElement = outputTableElement % ('birthday-name', self.name)
-        dateElement = outputTableElement % ('birthday-date', self.get_formatted_date())
-        countdownElement = outputTableElement % ('birthday-countdown', self.get_countdown())
-
-        return outputRow % (nameElement, dateElement, countdownElement)
 
 
     def __str__(self):
@@ -98,8 +104,11 @@ class BirthdayManager():
         self.birthdays = []
 
 
-    def add_birthday(self, birthday):
+    def add_birthday(self, entity, birthday):
         """Add a birthday to our birthdays list."""
+
+        client = get_client()
+        client.put(entity)
 
         self.birthdays.append(birthday)        
         self.birthdays.sort()
@@ -107,34 +116,69 @@ class BirthdayManager():
 
     def create_birthday(self, name, date):
         """Create a new birthday with a given date."""
+        
+        client = get_client()
+        key = client.key('birthday')
+        entity = datastore.Entity(key)
+        entity.update(
+            {
+                'name': clean(name),
+                'date': date,
+            }
+        )
 
-        self.add_birthday(Birthday(clean(name), date))
+        new_birthday = Birthday(clean(name), date, entity.id)
+
+        self.add_birthday(entity, new_birthday)
 
 
     def get_birthdays_output(self):
         """Return the current birthday contents as a plain text string."""
 
-        result = ''
-        for birthday in self.birthdays:
-            result += str(birthday)
-            result += '\n'
-        return result
+        self.update_birthdays()
+
+        return '\n'.join(str(birthday) for birthday in self.birthdays)
 
 
-    def get_birthdays_html(self):
+    def get_birthdays(self):
         """Return the current birthday contents as HTML."""
 
-        result = ''
-        for birthday in self.birthdays:
-            result += birthday.to_html()
-            result += '\n'
-        return result
+        self.update_birthdays()
+
+        return self.birthdays
+
 
     def clear_birthdays(self):
+        """Clear all birthdays in the database and on the page."""
+        
+        client = get_client()
+        fetch = fetch_birthdays()
+
+        for entity in fetch:
+            key = client.key('birthday', entity.id)
+            client.delete(key)
+    
         self.birthdays.clear()
 
-    def delete_birthday(self, name, date):
-        # Implement Later -- TODO
-        pass 
+
+    def delete_birthday(self, id):
+        """Delete a single birthday from the datastore update the list."""
+
+        client = get_client()
+        key = client.key('birthday', int(id))
+        client.delete(key)
+
+        self.update_birthdays()
 
 
+    def update_birthdays(self):
+        """Update the list of birthdays new Birthday objects based on the datastore."""
+
+        fetch = fetch_birthdays()
+
+        self.birthdays = [
+            Birthday(entity['name'], datetime.fromtimestamp(entity['date'].timestamp()), entity.id)
+            for entity in fetch
+        ]
+        self.birthdays.sort()
+ 

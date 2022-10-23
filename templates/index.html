@@ -1,24 +1,31 @@
-{% extends '_base.html' %} {% block content %}
-
+{% extends '_base.html' %}
+{% block content %}
 
 <div class="app-body">
-    <h1 class='current-date'>Today is {{today}} <em>- WORK IN PROGRESS -</em> </h1> 
-    
-    <!--TODO: form for user input and queries-->
+    <h1 class="current-date">Today is {{today}} <em>- WORK IN PROGRESS -</em> </h1> 
     <div class="birthday-form">
 		<form method="post" action="/push">
 			<table>
-				<th colspan='3' class='birthday-title'>Upcoming Birthdays!</th>
-				{{birthdays|safe}}
+				<th colspan="4" class="birthday-title">Upcoming Birthdays!</th>
+                {% for birthday in birthdays %}
+                    <tr>
+                        <td class="birthday-name">{{ birthday.name }}</td>
+                        <td class="birthday-date">{{ birthday.get_formatted_date() }}</td>
+                        <td class="birthday-countdown">{{ birthday.get_countdown() }}</td>
+                        <td>
+                            <a href="/delete-birthday?id={{ birthday.entity_id }}">delete</a>
+                        </td>
+                    </tr>
+                {% else %}
+                <tr><td colspan="4">No birthdays to list.</td></tr>
+                {% endfor %}
 				<tr>
 					<td><input type="text" name="name" value="{{name}}"/></td>
 					<td><input type="date" name="date" value="{{date}}"/></td>
-					<td><input type="submit" /></td>
+					<td><input type="submit"/></td>
 				</tr>
 			</table>
 		</form>
 	</div>
-    
 </div>
-
 {% endblock %}
