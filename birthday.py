@@ -40,6 +40,7 @@ class Birthday():
         self.name = name
         self.date = date
         self.entity_id = entity_id
+        self.countdown = self.get_countdown()
 
 
     def get_formatted_date(self):
@@ -49,7 +50,7 @@ class Birthday():
 
 
     def get_countdown(self):
-        """Return the number of days between the the given date and today as a string 'in DD days!'"""
+        """Return the number of days between the the given date and today."""
 
         # Calculate begining of today, the birthday this year, and the birthday next year to use in calculation
         today = datetime.combine(datetime.today(), datetime.min.time())
@@ -57,13 +58,8 @@ class Birthday():
         next_year = datetime(today.year+1, self.date.month, self.date.day)
     
         # Get the difference in days as an integer
-        countdown =  ((this_year if this_year > today else next_year) - today).days
-
-        if countdown == 365:
-            return 'TODAY!'
-
-        return f'in {countdown} days!'
-
+        countdown = ((this_year if this_year > today else next_year) - today).days
+        return countdown % 365
 
     def __str__(self):
         """Return a simple formatted string with the birthday contents."""
@@ -72,27 +68,27 @@ class Birthday():
     
 
     def __lt__(self, other):
-        return self.date < other.date
+        return self.countdown < other.countdown
 
 
     def __gt__(self, other):
-        return self.date > other.date
+        return self.countdown > other.countdown
     
 
     def __eq__(self, other):
-        return self.date == other.date
+        return self.countdown == other.countdown
     
 
     def __ne__(self, other):
-        return self.date != other.date
+        return self.countdown != other.countdown
     
 
     def __le__(self, other):
-        return self.date <= other.date
+        return self.countdown <= other.countdown
     
 
     def __ge__(self, other):
-        return self.date >= other.date
+        return self.countdown >= other.countdown
 
 
 class BirthdayManager():

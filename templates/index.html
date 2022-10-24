@@ -11,7 +11,12 @@
                     <tr>
                         <td class="birthday-name">{{ birthday.name }}</td>
                         <td class="birthday-date">{{ birthday.get_formatted_date() }}</td>
-                        <td class="birthday-countdown">{{ birthday.get_countdown() }}</td>
+                        {% set countdown = birthday.get_countdown() %}
+                        {% if countdown is equalto 0 %}
+                            <td class="birthday-countdown">Today!</td>
+                        {% else %}
+                            <td class="birthday-countdown"> in {{countdown}} days!</td>
+                        {% endif %}
                         <td>
                             <a href="/delete-birthday?id={{ birthday.entity_id }}">delete</a>
                         </td>
