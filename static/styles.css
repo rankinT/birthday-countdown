@@ -27,7 +27,10 @@ b{
 nav table{
     background-color: var(--background-color-2);
     padding: 5px 0.5rem;
-    border-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin-left: 30%;
+    margin-bottom: 0;
 }
 
 nav table .title{
@@ -83,9 +86,14 @@ nav table .link:visited{
 
 .app-body{
     margin: 1rem;
+    margin-top: 0;
     padding: 1em;
     border-radius: 5px;
     background-color: var(--background-color-2);
+}
+
+.app-body .welcome-name{
+    color: rgb(215, 255, 225);
 }
 
 .current-date em{
@@ -123,5 +131,3 @@ nav table .link:visited{
     border-radius: 5px;
     background-color: var(--background-color-2);
 }
-
-
