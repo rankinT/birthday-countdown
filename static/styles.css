@@ -16,8 +16,8 @@ body{
 }
 
 b{
-   color:  var(--bold-color);
-   font-family: verdana;
+    color:  var(--bold-color);
+    font-family: verdana;
 
 }
 
@@ -27,12 +27,20 @@ b{
 nav table{
     background-color: var(--background-color-2);
     padding: 5px 0.5rem;
-    border-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin-left: 30%;
+    margin-bottom: 0;
 }
 
 nav table .title{
     padding-right: 1rem;
 }
+
+nav table .link a:link { text-decoration: none; }
+nav table .link a:visited { text-decoration: none; }
+nav table .link a:hover { text-decoration: none; }
+nav table .link a:active { text-decoration: none; }
 
 nav table .link{
     background-color: var(--background-color-3);
@@ -42,9 +50,11 @@ nav table .link{
     color: #056acd;
 }
 
+
 nav table .link:hover{
     background-color: var(--background-color-3-alt);
     padding: 0rem 0.5rem;
+    text-decoration: none;
     border-radius: 5px;
 }
 
@@ -52,6 +62,7 @@ nav table .link:visited{
     background-color: var(--background-color-3-alt);
     padding: 0rem 0.5rem;
     border-radius: 5px;
+    text-decoration: none;
     color: #056acd;
 }
 
@@ -60,6 +71,7 @@ nav table .link:visited{
 
 .info-container {
     margin: 1rem;
+    margin-top: 0;
     padding: 1em;
     border-radius: 5px;
     background-color: var(--background-color-2);
@@ -83,9 +95,14 @@ nav table .link:visited{
 
 .app-body{
     margin: 1rem;
+    margin-top: 0;
     padding: 1em;
     border-radius: 5px;
     background-color: var(--background-color-2);
+}
+
+.app-body .welcome-name{
+    color: rgb(215, 255, 225);
 }
 
 .current-date em{
@@ -119,9 +136,8 @@ nav table .link:visited{
 
 .about-container {
     margin: 1rem;
+    margin-top: 0;
     padding: 1em;
     border-radius: 5px;
     background-color: var(--background-color-2);
 }
-
-
