@@ -21,7 +21,7 @@
                             <td class="birthday-countdown"> in {{countdown}} days!</td>
                         {% endif %}
                         <td>
-                            <a href="/delete-birthday?id={{ birthday.entity_id }}">delete</a>
+                            <a id="delete-bd" onclick="show_image('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.dictionary.com%2Fe%2Femoji%2Fslightly-frowning-face%2F&psig=AOvVaw2JXcxUfhw1BgUdTnRa-lf2&ust=1667933506770000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCJCk2dPenPsCFQAAAAAdAAAAABAE', 276, 110, 'Frowny Face');" href="/delete-birthday?id={{ birthday.entity_id }}">delete</a>
                         </td>
                     </tr>
                 {% else %}
@@ -46,6 +46,23 @@
 		document
 			.getElementById("submit-bd")
 			.addEventListener("mouseover", confetti);
+	</script>
+	<!--Javascript2-->
+	<script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+	<script>
+		function show_image(src, width, height, alt) {
+			var img = document.createElement("img");
+			img.src = src;
+			img.width = width;
+			img.height = height;
+			img.alt = alt;
+
+			// This next line will just add it to the <body> tag
+			document.body.appendChild(img);
+		}
+		document
+			.getElementById("delete-bd")
+			.addEventListener("mouseover", show_image);
 	</script>
 </div>
 
