@@ -21,7 +21,7 @@
                             <td class="birthday-countdown"> in {{countdown}} days!</td>
                         {% endif %}
                         <td>
-                            <a id="delete-bd" href="/delete-birthday?id={{ birthday.entity_id }}">delete</a>
+                            <a class="delete-bd" href="/delete-birthday?id={{ birthday.entity_id }}">delete</a>
                         </td>
                     </tr>
                 {% else %}
@@ -47,6 +47,16 @@
 			.getElementById("submit-bd")
 			.addEventListener("mouseover", confetti);
 	</script>
+    <!-- Submission Confirmation -->
+    <script type="text/javascript">
+        document.getElementByClassName("delete-bd").onclick = function(a)
+        {
+            if( !confirm("Are you sure you want to delete your only birthday?") ) 
+            {
+                a.preventDefault();
+            }
+        }
+    </script>
 </div>
 
 {% endblock %}
