@@ -49,13 +49,18 @@
 	</script>
     <!-- Submission Confirmation -->
     <script type="text/javascript">
-        document.getElementsByClassName("delete-bd").onclick = function(a)
-        {
-            if( !confirm("Are you sure you want to delete your only birthday?") ) 
-            {
-                a.preventDefault();
-            }
-        }
+        var deletebuttons = document.getElementsByClassName("delete-bd");
+		
+		for(var i = 0; i < deletebuttons.length; i++){
+			deletebuttons[i].onclick = function(a)
+				{
+					if( !confirm("Are you sure you want to delete this birthday?") ) 
+					{
+						a.preventDefault();
+					}
+				}
+		}
+		
     </script>
 </div>
 
