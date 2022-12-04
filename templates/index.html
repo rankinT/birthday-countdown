@@ -1,11 +1,12 @@
 {% extends '_base.html' %} {% block content %}
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <div class="app-body">
 	<!--TODO SIGN IN/OUT... Login Name replaces "Hi First Last"-->
 	<h1 class="current-date">
 		Hi, <span class="welcome-name">First Last</span>! -- Today is {{today}}
 		<em>- WORK IN PROGRESS -</em>
 	</h1>
+    <div class="app-content">
 	<div class="birthday-form">
 		<form method="post" action="/push">
 			<table>
@@ -20,11 +21,13 @@
 					{% else %}
 					<td class="birthday-countdown">in {{countdown}} days!</td>
 					{% endif %}
-					<td>
+                    <td class="td-delete">
 						<a
 							class="delete-bd"
 							href="/delete-birthday?id={{ birthday.entity_id }}"
-							>delete</a
+							><span class="material-symbols-outlined">
+                                delete
+                                </span></a
 						>
 					</td>
 				</tr>
@@ -40,6 +43,24 @@
 				</tr>
 			</table>
 		</form>
+    </div>
+        <div class="note-form" id="note-form">
+            <form method="post" action="/save-note">
+                <table>
+                    <th colspan="4" class="birthday-title">Notepad</th>
+                    <tr><td>
+                        <textarea id="note-area" name="note-area" rows="10" cols="100">{{note}}</textarea>
+                    </td></tr>
+                    <tr>
+                        <td id="btnrow" style="display: flex;
+                        justify-content: center;">
+                            <button type="submit" class="note-btn" id="submit-note">Save</button>
+                            <button type="submit" class="note-btn" id="load-note" formaction="/load-note">Load</button>
+                            <button type="submit" class="note-btn" id="clear-note" formaction="/clear-note">Clear</button>
+                    </tr>
+                </table>
+            </form>
+        </div>
 	</div>
 	<!-- COLOR PRIORITY -->
 	<script>
@@ -77,6 +98,7 @@
 			};
 		}
 	</script>
+    </div>
 </div>
 
 {% endblock %}

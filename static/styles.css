@@ -101,12 +101,17 @@ nav table .link:visited{
     background-color: var(--background-color-2);
 }
 
+.app-content{
+    display: flex;
+}
+
 .app-body .welcome-name{
     color: rgb(215, 255, 225);
 }
 
 .current-date em{
     color: rgb(133, 0, 0);
+    display: none;
 }
 
 .app-body th{
@@ -123,13 +128,33 @@ nav table .link:visited{
     border-radius: 5px;
 }
 
-.app-body td:hover{
+.app-body .td-note:hover , .td-delete:hover{
     background-color: rgba(253, 186, 41, 0.651);
 }
 
 .birthday-form td{
     padding: 0.35rem;
 }
+
+.birthday-title{
+    font-size: 24px;
+}
+
+#note-form{
+    margin-right: 2rem;
+    margin-left: 2rem;  
+}
+
+#note-area{
+    max-width: 65vw;
+}
+
+.note-btn{
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    padding: 0.3rem;
+}
+
 
 /*-----------------------------------------------------*/
 /*---------------DESCRIPTION PAGE------------------------------*/
