@@ -1,5 +1,6 @@
 from datetime import datetime
 from google.cloud import datastore
+from flask import session
 
 
 def clean(s):
@@ -27,6 +28,7 @@ def fetch_birthdays():
 
     client = get_client()
     query = client.query(kind='birthday')
+    query.add_filter('user_email', '=', session['email'])
     
     return query.fetch()
 
@@ -120,6 +122,7 @@ class BirthdayManager():
             {
                 'name': clean(name),
                 'date': date,
+                'user_email': session['email']
             }
         )
 

@@ -1,0 +1,47 @@
+{% extends '_base.html' %} {% block content %}
+
+<div class="app-body">
+    <div class="app-content">
+        <div class="login-form">
+            <form method="POST" action="/login">
+                <table>
+                    <th class="birthday-title">Login</th>
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <tr>
+                        <td>
+                            {{ messages[0] }}
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% endwith %}
+                    <tr>
+                        <td>
+                            <input class='input-item' type="email" name="email" placeholder="Your Email" autofocus=""
+                                required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class='input-item' type="password" name="password" placeholder="Your Password"
+                                required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button class='input-item'>Login</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>New user? <a href="{{ url_for('auth.signup') }}">Sign up here!</a></p>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

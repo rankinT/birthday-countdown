@@ -22,6 +22,13 @@
 					<td class="link"><a href="index.html">Birthday Countdown</a></td>
 					<td class="link"><a href="about.html">About this App</a></td>
 					<td class="link"><a href="group-info.html">Meet the Members</a></td>
+                    {% if session.get('loggedin') %}
+                    <td class="link">
+                        <form method="POST"  action="/logout" >
+                            <button class="link">Logout</button>
+                        </form>
+                    </td>
+                    {% endif %}
 				</tr>
 			</table>
 		</nav>

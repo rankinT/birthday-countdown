@@ -3,7 +3,7 @@
 <div class="app-body">
 	<!--TODO SIGN IN/OUT... Login Name replaces "Hi First Last"-->
 	<h1 class="current-date">
-		Hi, <span class="welcome-name">First Last</span>! -- Today is {{today}}
+		Hi, <span class="welcome-name">{{ session.get('first_name') }} {{ session.get('last_name') }}</span>! -- Today is {{today}}
 		<em>- WORK IN PROGRESS -</em>
 	</h1>
     <div class="app-content">

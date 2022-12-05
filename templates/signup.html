@@ -1,0 +1,49 @@
+{% extends '_base.html' %} {% block content %}
+
+<div class="app-body">
+    <div class="app-content">
+        <div class="login-form">
+            <form method="POST" action="/signup">
+                <table>
+                    <th class="birthday-title">Signup</th>
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <tr>
+                        <td>
+                            {{ messages[0] }}. Go to <a href="{{ url_for('auth.login') }}">login page</a>.
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% endwith %}
+                    <tr>
+                        <td>
+                            <input class='input-item' type="email" name="email" placeholder="Email" required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class='input-item' type="password" name="password" placeholder="Password" required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class='input-item' type="text" name="first_name" placeholder="First Name" required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class='input-item' type="text" name="last_name" placeholder="Last Name" required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button class='input-item' type="submit">Sign Up</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
