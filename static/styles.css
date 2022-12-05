@@ -8,11 +8,16 @@
 }
 
 body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
     /*Photo by Jason Leung on Unsplash*/
     background-image: url('/s/confetti.jpg');
     /*background-color: var(--background-color-1); */
     font-family: 'Roboto', sans-serif;
     color: var(--font-color-1)
+        
 }
 
 b{
@@ -23,48 +28,52 @@ b{
 /*-----------------------------------------------------*/
 /*---------------NAV BAR------------------------------*/
 
-nav table{
+nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
     background-color: var(--background-color-2);
     padding: 5px 0.5rem;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    margin-left: 30%;
     margin-bottom: 0;
 }
 
-nav table .title{
-    padding-right: 1rem;
+nav .title{
+    margin: 0;
+    padding: 10px;
 }
 
-nav table .link a:link { text-decoration: none; }
-nav table .link a:visited { text-decoration: none; }
-nav table .link a:hover { text-decoration: none; }
-nav table .link a:active { text-decoration: none; }
-
-nav table .link{
+nav .link{
+    font-family: 'Roboto', sans-serif;
     background-color: var(--background-color-3);
-    padding: 0rem 0.5rem;
+    display: block;
     border-radius: 5px;
+    font-size: 16px;
+    text-decoration: none;
     font-weight: 600;
     color: #056acd;
-    appearance: button;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin: 2px;
 }
 
-
-nav table .link:hover{
+nav .link:hover{
     background-color: var(--background-color-3-alt);
-    padding: 0rem 0.5rem;
-    text-decoration: none;
-    border-radius: 5px;
 }
 
-nav table .link:visited{
-    background-color: var(--background-color-3-alt);
-    padding: 0rem 0.5rem;
-    border-radius: 5px;
-    text-decoration: none;
-    color: #056acd;
+/*-------------------------------------------------------*/
+/*---------------------------Block Body----------------------------*/
+
+.block-body {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    align-content: center;
 }
+
 
 /*-----------------------------------------------------*/
 /*---------------GROUP INFO PAGE------------------------------*/
@@ -94,6 +103,10 @@ nav table .link:visited{
 /*---------------APP PAGE------------------------------*/
 
 .app-body{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    align-content: center;
     margin: 1rem;
     margin-top: 0;
     padding: 1em;
@@ -110,6 +123,7 @@ nav table .link:visited{
 }
 
 .app-body th{
+
     color: rgb(148, 84, 0);
     background-color: rgba(255, 255, 255, 0.863);
     border-radius: 5px;
@@ -129,6 +143,13 @@ nav table .link:visited{
 
 .birthday-form td{
     padding: 0.35rem;
+}
+
+.app-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
 }
 
 /*-----------------------------------------------------*/

@@ -1,40 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<!-- from main.py -->
-		<title>{{page_title}}</title>
-		<!--yaml uses /s as static url-->
-		<link rel="stylesheet" href="/s/styles.css" />
 
-        <!--GOOGLE FONTS-->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet">
+<head>
+    <!-- from main.py -->
+    <title>{{page_title}}</title>
+    <!--yaml uses /s as static url-->
+    <link rel="stylesheet" href="/s/styles.css" />
+    <link rel="icon" href="https://emojis.wiki/emoji-pics/apple/partying-face-apple.png">
+    <!--GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,500&display=swap"
+        rel="stylesheet">
 
-	</head>
-	<body>
-        <!--TODO: sign in/out button or page-->
-        <!-- Can probably replace 'Navigation' with Sign In/up/out block-->
-		<nav>
-			<table>
-				<tr>
-					<td class="title"><h3>Navigation:</h3></td>
-					<td class="link"><a href="index.html">Birthday Countdown</a></td>
-					<td class="link"><a href="about.html">About this App</a></td>
-					<td class="link"><a href="group-info.html">Meet the Members</a></td>
-                    {% if session.get('loggedin') %}
-                    <td class="link">
-                        <form method="POST"  action="/logout" >
-                            <button class="link">Logout</button>
-                        </form>
-                    </td>
-                    {% endif %}
-				</tr>
-			</table>
-		</nav>
-		<div class="block-body">
-			<!--content from templates-->
-			{% block content %}{% endblock %}
-		</div>
-	</body>
+</head>
+
+<body>
+    <!--TODO: sign in/out button or page-->
+    <!-- Can probably replace 'Navigation' with Sign In/up/out block-->
+    <nav>
+        <h3 class="title">Navigation:</h3>
+        <a class="link" href="index.html">Birthday Countdown</a>
+        <a class="link" href="about.html">About this App</a>
+        <a class="link" href="group-info.html">Meet the Members</a>
+        {% if session.get('loggedin') %}
+        <form method="POST" action="/logout">
+            <button class="link" id="logout">Logout</button>
+        </form>
+        {% endif %}
+        </table>
+    </nav>
+    <div class="block-body">
+        <!--content from templates-->
+        {% block content %}{% endblock %}
+    </div>
+    <!-- Logout Confirmation -->
+    <script type="text/javascript">
+        var logoutbutton = document.getElementById("logout");
+
+        logoutbutton.onclick = function (a) {
+            if (!confirm("Are you sure you want to logout?")) {
+                a.preventDefault();
+            }
+        };
+    </script>
+</body>
+
 </html>
