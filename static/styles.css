@@ -45,7 +45,7 @@ nav .title{
     padding: 10px;
 }
 
-nav .link{
+.link{
     font-family: 'Roboto', sans-serif;
     background-color: var(--background-color-3);
     display: block;
@@ -60,8 +60,25 @@ nav .link{
     margin: 2px;
 }
 
-nav .link:hover{
+.link:hover{
     background-color: var(--background-color-3-alt);
+}
+
+.cell_button {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color-3);
+    text-align: center;
+    display: block;
+    border-radius: 5px;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #056acd;
+    border: none;
+    cursor: pointer;
+    height: 100%;
+    padding: 10px;
+    margin: 0;
 }
 
 /*-------------------------------------------------------*/
@@ -133,6 +150,7 @@ nav .link:hover{
 }
 
 .app-body td{
+    white-space: nowrap;    
     padding: 1rem;
     background-color: rgba(252, 217, 143, 0.123);
     border-radius: 5px;
@@ -143,7 +161,14 @@ nav .link:hover{
 }
 
 .birthday-form td{
-    padding: 0.35rem;
+    padding: 3px;
+}
+
+.birthday-row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; 
+    justify-content: space-between;
 }
 
 .app-content {
@@ -151,6 +176,31 @@ nav .link:hover{
     flex-direction: column;
     align-items: center;
     align-content: center;
+}
+
+.birthday-name {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.td-delete {
+    padding: 0;
+    margin: 0;
+}
+
+.submit-bd {
+    margin: 0;
+    width: 100%;
+}
+
+.instructions {
+    padding-left: 10px;
+}
+
+.instructions h2 {
+    padding-top: 0;
+    margin-top: 0;
 }
 
 /*-----------------------------------------------------*/
@@ -163,3 +213,4 @@ nav .link:hover{
     border-radius: 5px;
     background-color: var(--background-color-2);
 }
+

@@ -2,7 +2,7 @@
 
 from datetime import datetime
 import data_util
-
+import main
 
 def clean(s):
     """Return a string w/ angle brackets, endlines, & tab characters removed."""
@@ -21,12 +21,13 @@ def clean(s):
 class Birthday():
     """An object representing a single birthday."""
 
-    def __init__(self, name, date, entity_id=None):
+    def __init__(self, name, date, entity_id=None, note_id=None):
         """Initialize a birthday object with a given name and date."""
 
         self.name = name
         self.date = date
         self.entity_id = entity_id
+        self.note_id = note_id
         self.countdown = self.get_countdown()
 
     def get_formatted_date(self):
@@ -89,17 +90,20 @@ class BirthdayManager():
     def create_birthday(self, name, date):
         """Create a new birthday with a given date."""
 
-        entity = data_util.create_entity('birthday')
-        entity.update(
+        note_entity = main.note_manager.create_note(clean(name))
+
+        birthday_entity = data_util.create_entity('birthday')
+        birthday_entity.update(
             {
                 'name': clean(name),
                 'date': date,
+                'note_id': note_entity.id
             }
         )
 
-        new_birthday = Birthday(clean(name), date, entity.id)
+        new_birthday = Birthday(clean(name), date, birthday_entity.id)
 
-        self.add_birthday(entity, new_birthday)
+        self.add_birthday(birthday_entity, new_birthday)
 
     def fetch_birthdays(self):
         """Fetch and return the birthday data from the datastore."""
@@ -137,7 +141,7 @@ class BirthdayManager():
         fetch = self.fetch_birthdays()
         self.birthdays = [
             Birthday(entity['name'], datetime.fromtimestamp(
-                entity['date'].timestamp()), entity.id)
+                entity['date'].timestamp()), entity.id, entity['note_id'])
             for entity in fetch
         ]
         self.birthdays.sort()

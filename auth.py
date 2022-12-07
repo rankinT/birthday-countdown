@@ -28,6 +28,7 @@ def login_post():
     session['email'] = user['email']
     session['first_name'] = user['first_name']
     session['last_name'] = user['last_name']
+    session['data_loaded'] = False
 
     return redirect(url_for('root'))
 
@@ -66,5 +67,6 @@ def logout():
     session.pop('email')
     session.pop('first_name')
     session.pop('last_name')
+    session.pop('data_loaded')
 
     return redirect(url_for('auth.login'))

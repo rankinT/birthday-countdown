@@ -32,6 +32,13 @@ def fetch_first_entity(kind):
     else:
         return None
 
+def fetch_by_id(kind, id):
+    """Fetch an entity from datastore by its key"""
+    client = get_client()
+    key = client.key(kind, int(id))
+
+    return client.get(key)
+
 def delete_entity(kind, id):
     client = get_client()
     key = client.key(kind, int(id))
