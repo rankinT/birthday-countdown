@@ -55,7 +55,7 @@ class NoteManager():
         """Create a new note (only used if a note does not yet exist for the user)."""
         note_entity = data_util.create_entity('note')
         note_entity['text'] = ''
-        note_entity['name'] = name
+        note_entity['name'] = clean(name)
         self.save_note(note_entity)
 
         return note_entity

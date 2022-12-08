@@ -87,21 +87,19 @@ class BirthdayManager():
         self.birthdays.append(birthday)
         self.birthdays.sort()
 
-    def create_birthday(self, name, date):
+    def create_birthday(self, name, date, note):
         """Create a new birthday with a given date."""
-
-        note_entity = main.note_manager.create_note(clean(name))
 
         birthday_entity = data_util.create_entity('birthday')
         birthday_entity.update(
             {
                 'name': clean(name),
                 'date': date,
-                'note_id': note_entity.id
+                'note_id': note.id
             }
         )
 
-        new_birthday = Birthday(clean(name), date, birthday_entity.id)
+        new_birthday = Birthday(clean(name), date, birthday_entity.id, note.id)
 
         self.add_birthday(birthday_entity, new_birthday)
 

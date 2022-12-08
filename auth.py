@@ -29,6 +29,8 @@ def login_post():
     session['first_name'] = user['first_name']
     session['last_name'] = user['last_name']
     session['data_loaded'] = False
+    session['note_id'] = None
+    session['note_name'] = None
 
     return redirect(url_for('root'))
 
@@ -68,5 +70,7 @@ def logout():
     session.pop('first_name')
     session.pop('last_name')
     session.pop('data_loaded')
+    session.pop('note_id')
+    session.pop('note_name')
 
     return redirect(url_for('auth.login'))

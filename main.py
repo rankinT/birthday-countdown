@@ -58,7 +58,11 @@ def push_birthday():
     # Only update birthdays if the form was filled completely
     if name and date:
         formatted_date = datetime.strptime(date, '%Y-%m-%d')
-        birthday_manager.create_birthday(name, formatted_date)
+        note_entity = note_manager.create_note(name)
+        birthday_manager.create_birthday(name, formatted_date, note_entity)
+
+        session['note_id'] = note_entity.id
+        session['note_name'] = note_entity['name']
 
     return redirect(url_for('root'))
 
